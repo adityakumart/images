@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="assets/jquery-3.6.0.min.js"></script>
+    <style>
+        .center {
+            position: absolute;
+            top: calc(50vh - 150px);
+            left: 45%;
+            text-align: center;
+        }
+        
+        .mainContent {
+            padding: 7px;
+            border: 1px solid blue;
+            border-radius: 50%;
+        }
+        
+        .contentDiv {
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            background-color: blue;
+            height: 175px;
+            width: 175px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .clickText {
+            margin-top: 20px;
+            color: grey;
+        }
+        
+        .contentText {
+            transition: transform 2s;
+        }
+        
+        .contentText.zoomIn {
+            transform: scale(1.5);
+        }
+        
+        .contentDiv.logoAdd {
+            background-color: white !important;
+        }
+        
+        .welcomeTxt {
+            visibility: hidden;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .contentLogo {
+            display: none;
+            width: 125px;
+            height: 125px;
+        }
+        
+        .mainContent.logoAdded {
+            animation: changeBorder 1.5s forwards;
+        }
+        
+        @keyframes changeBorder {
+            0% {
+                border: 1px dotted rgb(77, 77, 255);
+            }
+            20% {
+                border: 1px dotted rgb(58, 58, 255);
+            }
+            40% {
+                border: 1px dotted rgb(51, 51, 250);
+            }
+            60% {
+                border: 1px dashed rgb(25, 25, 255);
+            }
+            80% {
+                border: 2px dashed rgb(12, 12, 255);
+            }
+            100% {
+                border: 2px dashed blue;
+            }
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $(".mainContent").click(function() {
+                $(".contentText").addClass('zoomIn');
+                $(".contentText").fadeOut(1000);
+                $(".mainContent").addClass('logoAdded');
+                $('.clickText').fadeOut(200);
+                $('.welcomeTxt span').fadeIn(1000);
+                $('.welcomeTxt').css('visibility', 'visible');
+                setTimeout(() => {
+                    $(".contentDiv").addClass('logoAdd');
+                    $(".contentLogo").fadeIn(1000);
+                }, 1000);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="center">
+        <div class="welcomeTxt">
+            <span>Welcome</span>
+        </div>
+        <div class="mainContent">
+            <div class="contentDiv">
+                <img class="contentText" src="assets/FORT - assessment - logo.svg">
+                <img class="contentLogo" src="assets/FORT - assessment - robo.png">
+            </div>
+        </div>
+        <div class="clickText">Click Above</div>
+    </div>
+</body>
+
+</html>
